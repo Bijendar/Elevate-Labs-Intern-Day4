@@ -1,0 +1,15 @@
+{
+  "folders": [
+    {
+      "path": "file:///root"
+    },
+    {
+      "path": ""
+    }
+  ],
+  "settings": {
+    "window.menuBarVisibility": "compact",
+    "workbench.colorTheme": "dark",
+    "preview.openByDefault": true
+  }
+}
