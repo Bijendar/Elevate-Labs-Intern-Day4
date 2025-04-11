@@ -5,6 +5,14 @@ let users = [
 ];
 
 /**
+ * Get all users with credentials (internal use only)
+ * @returns {Array} Array of users with passwords
+ */
+function getAllUsersWithCredentials() {
+  return [...users];
+}
+
+/**
  * Get all users (without passwords)
  * @returns {Array} Array of users without passwords
  */
@@ -75,5 +83,6 @@ module.exports = {
   getUserById,
   createUser,
   updateUser,
-  deleteUser
+  deleteUser,
+  getAllUsersWithCredentials // For internal use only
 };

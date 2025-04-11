@@ -1,20 +1,4 @@
-// Authentication module
-const users = [
-  { id: 1, username: 'admin', password: 'admin123', role: 'admin' },
-  { id: 2, username: 'user', password: 'user123', role: 'user' }
-];
-
-/**
- * Authenticate a user based on username and password
- * @param {string} username - The username to authenticate
- * @param {string} password - The password to verify
- * @returns {object|null} User object if authenticated, null otherwise
- */
-function authenticate(username, password) {
-  const user = users.find(u => u.username === username && u.password === password);
-  if (user) {
-    // Return user without password
-    const { password, ...userWithoutPassword } = user;
+const { password, ...userWithoutPassword } = user;
     return userWithoutPassword;
   }
   return null;
@@ -27,7 +11,15 @@ function authenticate(username, password) {
  * @returns {boolean} True if user has required role, false otherwise
  */
 function checkRole(userId, requiredRole) {
-  const user = users.find(u => u.id === userId);
+  // Input validation
+  if (!userId || !requiredRole) {
+    return false;
+  }
+  
+  // Get all users from the users module
+  const allUsers = usersModule.getAllUsersWithCredentials();
+  const user = allUsers.find(u => u.id === userId);
+  
   return user && user.role === requiredRole;
 }
 
